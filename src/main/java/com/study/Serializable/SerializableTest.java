@@ -6,8 +6,9 @@ import java.io.*;
  * @description 序列化
  * @date 2019/2/26
  */
-public class SerializableTest {
+public class SerializableTest  {
 
+    private  transient  int a=0;
     public static void main(String[] args) {
         DeSe();
     }

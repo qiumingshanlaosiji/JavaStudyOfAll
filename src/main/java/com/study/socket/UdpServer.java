@@ -16,6 +16,7 @@ public class UdpServer {
 
         DatagramSocket datagramSocket = new DatagramSocket(8080);
         byte[] buf = new byte[1024];
+        //阻塞
         DatagramPacket ds = new DatagramPacket(buf, buf.length);
         datagramSocket.receive(ds);
 

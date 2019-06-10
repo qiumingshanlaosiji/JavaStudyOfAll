@@ -12,14 +12,22 @@ import java.net.Socket;
  */
 public class TcpClient {
 
-    public void tcpClient() throws IOException{
+    public static void tcpClient() throws IOException {
 
-        Socket socket=new Socket("192.168.5.241",8080);
-        OutputStream outputStream=socket.getOutputStream();
+
+        Socket socket = new Socket("192.168.5.241", 8080);
+
+        OutputStream outputStream = socket.getOutputStream();
+
         outputStream.write("asdads".getBytes());
+        System.out.println("12");
         socket.close();
 
-        }
 
+    }
+
+    public static void main(String[] args) throws Exception {
+        tcpClient();
+    }
 
 }

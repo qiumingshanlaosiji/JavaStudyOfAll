@@ -14,9 +14,7 @@ import java.lang.reflect.Method;
 public class CglibTest {
 
     public static void main(String[] args) {
-//代理类class文件存入本地磁盘
-        //System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\code");
-        //
+
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(PersonService.class);
         enhancer.setCallback(new CglibProxyIntercepter());
@@ -27,7 +25,7 @@ public class CglibTest {
 }
 
 
- class PersonService {
+  class  PersonService {
     public PersonService() {
         System.out.println("PersonService构造");
     }

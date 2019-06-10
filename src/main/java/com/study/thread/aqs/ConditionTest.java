@@ -10,6 +10,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2019/3/24
  */
 public class ConditionTest {
+
+    public static void main(String[] args) {
+
+    }
+
+
     private LinkedList<String> buffer;    //容器
     private int maxSize ;           //容器最大
     private Lock lock;
@@ -29,6 +35,7 @@ public class ConditionTest {
         try {
             while (maxSize == buffer.size()){
                 notFullCondition.await();       //满了，添加的线程进入等待状态
+                System.out.println("1235");
             }
 
             buffer.add(string);

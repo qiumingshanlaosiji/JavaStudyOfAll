@@ -34,6 +34,7 @@ public class CountDownLatchTest {
             System.out.println(Thread.currentThread().getName() + "，到达会议室....");
             //员工到达会议室 count - 1
             countDownLatch.countDown();
+            System.out.println(Thread.currentThread().getName() + "继续做事");
         }
     }
 

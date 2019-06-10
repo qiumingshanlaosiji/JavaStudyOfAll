@@ -17,8 +17,8 @@ import java.util.concurrent.Executors;
  * @date 2018/12/23
  */
 public class DisruptorTest {
+    public static void main(String[] args) {
 
-    public  void  Test(){
 // 1.创建一个可缓存的线程 提供线程来出发Consumer 的事件处理
         ExecutorService executor = Executors.newCachedThreadPool();
         // 2.创建工厂
@@ -26,7 +26,7 @@ public class DisruptorTest {
         // 3.创建ringBuffer 大小
         int ringBufferSize = 1024 * 1024; // ringBufferSize大小一定要是2的N次方
         // 4.创建Disruptor
-        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(eventFactory, ringBufferSize, executor,
+        Disruptor<LongEvent> disruptor = new Disruptor<>(eventFactory, ringBufferSize, executor,
                 ProducerType.SINGLE, new YieldingWaitStrategy());
         // 5.连接消费端方法
         disruptor.handleEventsWith(new LongEventHandler());

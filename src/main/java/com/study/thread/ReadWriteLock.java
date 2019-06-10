@@ -10,12 +10,32 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @description 读写锁
  * @date 2018/12/23
  */
-public class ReadWriteLock {
+  class  ReadWriteLockTest{
+
     public static void main(String[] args) {
+        ReadWriteLock writeLock=new ReadWriteLock();
+
+      new Thread(()->{
+          writeLock.get("1");
+        }).start();
+      new Thread(()->{
+            ReadWriteLock writeLock1=new ReadWriteLock();
+            writeLock.put("1","1");
+        }).start();
+        new Thread(()->{
+            writeLock.get("1");
+        }).start();
+        new Thread(()->{
+            ReadWriteLock writeLock1=new ReadWriteLock();
+            writeLock.put("1","1");
+        }).start();
 
     }
+}
+public class ReadWriteLock {
+
     //读写锁
-    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock(true);
 
     //写入锁
     private ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
@@ -25,8 +45,11 @@ public class ReadWriteLock {
 
     public void put(String key, String value) {
         try {
+
             writeLock.lock();
             System.out.println("写入数据");
+
+            Thread.sleep(1000);
             caChe.put(key, value);
 
         } catch (Exception e) {
@@ -40,6 +63,10 @@ public class ReadWriteLock {
     public String get(String key) {
         try {
             readLock.lock();
+            System.out.println("读取数据");
+
+            Thread.sleep(5000);
+
             return (String) caChe.get(key);
         } catch (Exception e) {
             return "";

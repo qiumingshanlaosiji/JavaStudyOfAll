@@ -15,6 +15,9 @@ public class CyclicBarrierTest {
             //等待
             try {
                 cyclicBarrier.await();
+
+                //相互等待  才能做后面的事情
+                System.out.println(Thread.currentThread().getName()+"开始做事");
             } catch (Exception e) {
                 e.printStackTrace();
             }
